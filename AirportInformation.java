@@ -1,21 +1,22 @@
 import java.util.Random;
-import java.util.Timer;
-import java.util.TimerTask;
 
-public class Main {
+public class AirportInformation {
+
+
     public static void main(String[] args) throws InterruptedException {
+        AirportInformation airportInformation = new AirportInformation();
         System.out.println("Please have patience!");
         while (true) {
             Thread.sleep(4000);
-            StartFlight();
+            airportInformation.startFlight();
         }
     }
 
-    public static void StartFlight() {
+    public void startFlight() {
 
         // Airport Direction
-        String[] startDirectionFlight = {"MUC", "BER", "HMB", "canceled"};
-        String[] endDirectionFlight = {"FRK", "MNH", "KLN", "canceled"};
+        String[] startDirectionFlight = {"MUC", "BER", "HMB", "cancelled"};
+        String[] endDirectionFlight = {"FRK", "MNH", "KLN", "cancelled"};
 
         // Show Flight direction available
         byte random = (byte) new Random().nextInt(startDirectionFlight.length);
@@ -24,8 +25,8 @@ public class Main {
         byte minutes = (byte) new Random().nextInt(60);
 
         // Show canceled flight
-        if (endDirectionFlight[random] == "canceled") {
-            System.out.println("Flight " + startDirectionFlight[count] + " - " + endDirectionFlight[count] + " got canceled. SORRY! :(\n");
+        if (endDirectionFlight[random].equalsIgnoreCase("cancelled")) {
+            System.out.println("Flight " + startDirectionFlight[count] + " - " + endDirectionFlight[count] + " got cancelled. SORRY! :(\n");
             return;
         }
 
